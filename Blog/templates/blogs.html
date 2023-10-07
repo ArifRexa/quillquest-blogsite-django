@@ -1,0 +1,65 @@
+{% extends "core/base.html" %}
+{% block title %}
+Blogs |
+{% endblock title %}
+
+{% block content %}
+<h1 class="text-3xl font-bold underline text-center mt-12">
+  Here is all blogs!
+
+</h1>
+
+{% if blogs %}
+  
+
+<div class="relative overflow-x-auto shadow-md sm:rounded-lg lg:w-3/4 mx-auto my-44">
+  <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400 ">
+    <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+      <tr>
+        <th scope="col" class="px-6 py-3">
+          Blog Title
+        </th>
+        <th scope="col" class="px-6 py-3">
+          Author
+        </th>
+        <th scope="col" class="px-6 py-3">
+          Category
+        </th>
+        <th scope="col" class="px-6 py-3">
+          Publication Date
+        </th>
+        <th scope="col" class="px-6 py-3">
+          Action
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for blog in blogs %}
+      <tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
+        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+          {{blog.title}}
+        </th>
+        <td class="px-6 py-4">
+          {{blog.author}}
+        </td>
+        <td class="px-6 py-4">
+          {{blog.category}}
+        </td>
+        <td class="px-6 py-4">
+          {{blog.published_date}}
+        </td>
+        <td class="px-6 py-4">
+          <a href="{% url 'blog_detail' blog.id %}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Read more...</a>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% else %}
+<h1 class="text-3xl font-bold text-red-700 text-center mt-10">No blogs found</h1>
+{% endif %}
+
+
+
+{% endblock content %}

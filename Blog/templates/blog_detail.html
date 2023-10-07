@@ -1,0 +1,24 @@
+{% extends "core/base.html" %}
+{% block title %}
+{{ blog.title }} |
+{% endblock title %}
+
+{% block content %}
+<div class="container mx-auto w-3/4 mt-10 mb-10">
+    {% if blog.author_image %}
+
+    <img src="{{ blog.author_image.url }}" alt="author_image" width="50px">
+    {% endif %}
+    <h1 class="text-3xl font-bold">{{ blog.title }}</h1>
+    <p class="text-black-700 dark:text-black-400">Published by {{ blog.author }} <br> {{ blog.published_date }}</p>
+    <div class="mt-4 mb-10">{{ blog.content | safe }}</div>
+    {% if blog.featured_image %}
+    <div class="container mx-auto flex items-center justify-center mb-10">
+
+        <img src="{{ blog.featured_image.url }}" alt="author_image" width="400px">
+    </div>
+    {% endif %}
+    <a href="/blogs/" class="font-medium text-white dark:text-white font-bold hover:underline text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Back to all blogs</a>
+
+</div>
+{% endblock content %}
